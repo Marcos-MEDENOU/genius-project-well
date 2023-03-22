@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Genius</title>
 </head>
 <body>
 
 <%@ include file = "/WEB-INF/components/header.jsp" %>
 
+	
 		<div class="bg-white relative lg:py-24">
   <div class="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
       xl:px-5 lg:flex-row">
@@ -39,8 +40,8 @@
                   border-gray-300 rounded-md"/>
             </div>
             <div class="relative">
-              <a class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-orange-700
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Submit</a>
+              <button class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-orange-700
+                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Submit</button>
             </div>
             
               <div class="relative">
@@ -55,6 +56,7 @@
     </div>
   </div>
 </div>
+
  <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
       <script src="https://cdn.tailwindcss.com"></script>
 </body>

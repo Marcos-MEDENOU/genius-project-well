@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.validation.forms.RegisterForm;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -35,7 +38,44 @@ public class SignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		
+		String completName = request.getParameter("Nomcomplet");
+		String pseudo = request.getParameter("Pseudo");
+		String email = request.getParameter("Email");
+		String password = request.getParameter("Password");
+		String passwordConfirm = request.getParameter("ConfirmPassword");
+		
+		
+		request.setAttribute("completName", completName);
+		request.setAttribute("pseudo", pseudo);
+		request.setAttribute("email", email);
+		request.setAttribute("password", password);
+		request.setAttribute("passwordConfirm", passwordConfirm);
+		
+		//session
+		
+		RegisterForm register = new RegisterForm();
+		
+		register.verificateIdentifiants(request);
+		
+		request.setAttribute("response", register);
+		
+	
+//		
+//		HttpSession session = request.getSession(); 
+//		
+//		session.setAttribute("nom", completName);
+//		
+//		Noms tableNoms = new Noms();
+		
+//		request.setAttribute("tableNoms", tableNoms.recupUser());
+		
+		if(register.getResultat()=="Authentification reussi") {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/articles.jsp").forward(request,response);
+		}else {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/sign_up.jsp").forward(request,response);
+		}
 	}
 
 }
